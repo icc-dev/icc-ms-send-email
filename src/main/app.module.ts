@@ -1,10 +1,12 @@
+import { CustomConfigModule } from './../custom-config/custom-config.module';
+import { LoggerService } from '@icc-dev/icc-log-service';
+import { EmailService } from './services/email.service';
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { AppController } from './controller/app.controller';
 
 @Module({
-  imports: [],
+  imports: [CustomConfigModule],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [EmailService, LoggerService],
 })
 export class AppModule {}
