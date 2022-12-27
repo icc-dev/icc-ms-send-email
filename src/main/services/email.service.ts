@@ -1,21 +1,14 @@
-import { LoggerService } from '@icc-dev/icc-log-service';
+import { IEmailService, IEmailResponse } from '@providers/emails/interfaces/emails.interface';
 import { Injectable } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
-import * as SendGrid from '@sendgrid/mail';
-import { SendGridProvider } from 'src/providers/emails/sendgrid/sendgrid.provider';
+import { EmailDataDto } from '@providers/emails/dto/mail-data.dto';
 
 @Injectable()
-export class EmailService extends SendGridProvider {
-    public readonly emailTo: string;
+export class EmailService {
     constructor(
-        private readonly configService: ConfigService,
-        private readonly loggerService: LoggerService
-    ) {
-        super(configService.get<string>('sendgrid.apiKey'), loggerService);
-        this.emailTo = configService.get<string>('sendgrid.mailFrom');
-    }
+        public emailProvider: IEmailService
+    ) { }
 
-    async send(mail: SendGrid.MailDataRequired) {
-        return super.send(mail);
+    async send(mail: EmailDataDto): Promise<IEmailResponse> {
+        return this.emailProvider.send(mail);
     }
 }

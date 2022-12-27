@@ -1,5 +1,5 @@
 import { RpcException } from "@nestjs/microservices";
-import { EmailDataDto } from "../dto/mail-data.dto";
+import { EmailDataDto } from "../../providers/emails/dto/mail-data.dto";
 
 export function validationData(data: EmailDataDto) {
     if (!data?.templateId) {
@@ -8,7 +8,7 @@ export function validationData(data: EmailDataDto) {
     if (!data?.to) {
         throw new RpcException(`Does't provide to email addresse`);
     }
-    if (!data?.attachment?.content?.length || !data?.attachment?.filename) {
+    if (data?.attachment && (!data.attachment.content.length || !data.attachment.filename)) {
         throw new RpcException(`Receive attachment without content or filename`);
     }
 }

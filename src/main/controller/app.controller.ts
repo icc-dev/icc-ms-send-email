@@ -1,6 +1,6 @@
 import { Controller } from '@nestjs/common';
 import { MessagePattern } from '@nestjs/microservices/decorators';
-import { EmailDataDto } from '../dto/mail-data.dto';
+import { EmailDataDto } from '@providers/emails/dto/mail-data.dto';
 import { EmailService } from '../services/email.service';
 import { validationData } from '../utils/controllers.utils';
 
@@ -11,13 +11,7 @@ export class AppController {
   @MessagePattern({ cmd: 'send_email' })
   async handlerSendEmail(data: EmailDataDto) {
     validationData(data);
-    const dataMail = {
-      templateId: ''+data.templateId,
-      from: this.emailSrvc.emailTo,
-      to: ''+data.to,
-      dynamicTemplateData: data.dynamicTemplateData,
-      attachment: data.attachment
-    };
+    let dataMail = { ...data };
     return await this.emailSrvc.send(dataMail);
   }
 
