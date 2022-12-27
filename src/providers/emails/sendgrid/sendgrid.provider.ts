@@ -7,7 +7,7 @@ import { LoggerService } from '@icc-dev/icc-log-service';
 @Injectable()
 export class SendGridProvider implements IEmailService {
     private _emailFrom: string;
-    constructor(apiKey: string, emailFrom: string, public logger: LoggerService) {
+    constructor(apiKey: string, emailFrom: string, private logger: LoggerService) {
         sgMail.setApiKey(apiKey);
         this._emailFrom = emailFrom;
     }
@@ -22,6 +22,7 @@ export class SendGridProvider implements IEmailService {
                 body: transport[0].body,
             };
         } catch (error) {
+            console.error('error', error)
             this.logger.error(`[SendgridProvider:send] error sending email to ${mailData.to}`)
             return Promise.reject(error);
         }

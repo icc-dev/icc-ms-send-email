@@ -73,6 +73,9 @@
     "testEnvironment": "node",
     "moduleNameMapper": {
       "^@providers(.*)$": "<rootDir>/providers$1"
-    }
+    },
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/main.ts"
+    ]
   }
 }
