@@ -72,7 +72,8 @@
     "coverageDirectory": "../coverage",
     "testEnvironment": "node",
     "moduleNameMapper": {
-      "^@providers(.*)$": "<rootDir>/providers$1"
+      "^@providers(.*)$": "<rootDir>/providers$1",
+      "^@config(.*)$": "<rootDir>/custom-config$1"
     },
     "coveragePathIgnorePatterns": [
       "<rootDir>/main.ts"

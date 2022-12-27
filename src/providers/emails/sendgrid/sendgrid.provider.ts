@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { EmailDataDto } from '../dto/mail-data.dto';
-import { IEmailResponse, IEmailService } from './../interfaces/emails.interface';
 import * as sgMail from '@sendgrid/mail';
 import { LoggerService } from '@icc-dev/icc-log-service';
+import { IEmailResponse, IEmailService } from '../interfaces/emails.interface';
 
 @Injectable()
 export class SendGridProvider implements IEmailService {

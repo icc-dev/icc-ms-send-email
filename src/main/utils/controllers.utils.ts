@@ -1,5 +1,5 @@
 import { RpcException } from "@nestjs/microservices";
-import { EmailDataDto } from "../../providers/emails/dto/mail-data.dto";
+import { EmailDataDto } from "@providers/emails/dto/mail-data.dto";
 
 export function validationData(data: EmailDataDto) {
     if (!data || Object.keys(data).length === 0) {

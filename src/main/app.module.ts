@@ -1,6 +1,6 @@
 import { ConfigService } from '@nestjs/config';
-import { SendGridProvider } from '../providers/emails/sendgrid/sendgrid.provider';
-import { CustomConfigModule } from './../custom-config/custom-config.module';
+import { SendGridProvider } from '@providers/emails/sendgrid/sendgrid.provider';
+import { CustomConfigModule } from '@config/custom-config.module';
 import { LoggerService } from '@icc-dev/icc-log-service';
 import { EmailService } from './services/email.service';
 import { Module } from '@nestjs/common';

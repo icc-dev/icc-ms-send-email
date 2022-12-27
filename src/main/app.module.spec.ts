@@ -1,5 +1,5 @@
 import { LoggerService } from '@icc-dev/icc-log-service';
-import { CustomConfigModule } from './../custom-config/custom-config.module';
+import { CustomConfigModule } from '@config/custom-config.module';
 import { AppModule } from './app.module';
 import { Test } from '@nestjs/testing';
 import { EmailService } from './services/email.service';

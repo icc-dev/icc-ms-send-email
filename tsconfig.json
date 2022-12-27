@@ -19,6 +19,7 @@
     "noFallthroughCasesInSwitch": false,
     "paths": {
       "@providers/*": ["src/providers/*"],
+      "@config/*": ["src/custom-config/*"],
     }
   }
 }

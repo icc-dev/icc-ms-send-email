@@ -7,6 +7,7 @@
     "^.+\\.(t|j)s$": "ts-jest"
   },
   "moduleNameMapper": {
-    "^@providers(.*)$": "<rootDir>/../src/providers$1"
+    "^@providers(.*)$": "<rootDir>/../src/providers$1",
+    "^@config(.*)$": "<rootDir>/../src/custom-config$1"
   }
 }
