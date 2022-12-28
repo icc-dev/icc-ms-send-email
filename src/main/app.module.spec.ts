@@ -12,18 +12,19 @@ describe('AppModule', () => {
       imports: [AppModule, CustomConfigModule],
       providers: [
         {
-            provide: EmailService,
-            useFactory: async (loggerService: LoggerService) => {
-              const provider = new SendGridProvider(
-                'api-key',
-                'mailFrom',
-                loggerService
-              );
-              return new EmailService(provider);
-            },
-            inject: [ConfigService, LoggerService]
-          }, 
-        LoggerService]
+          provide: EmailService,
+          useFactory: async (loggerService: LoggerService) => {
+            const provider = new SendGridProvider(
+              'api-key',
+              'mailFrom',
+              loggerService,
+            );
+            return new EmailService(provider);
+          },
+          inject: [ConfigService, LoggerService],
+        },
+        LoggerService,
+      ],
     }).compile();
     expect(module).toBeDefined();
     expect(await module.resolve(LoggerService)).toBeInstanceOf(LoggerService);

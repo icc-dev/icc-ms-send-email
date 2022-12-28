@@ -5,12 +5,12 @@ import { Module } from '@nestjs/common';
 import sendrig from './config/sendgrid.config';
 
 const configModule = ConfigModule.forRoot({
-    load: [sendrig]
+  load: [sendrig],
 });
 
 @Module({
-    imports: [configModule],
-    exports: [configModule, ConfigService],
-    providers: [ConfigService]
+  imports: [configModule],
+  exports: [configModule, ConfigService],
+  providers: [ConfigService],
 })
-export class CustomConfigModule { }
+export class CustomConfigModule {}

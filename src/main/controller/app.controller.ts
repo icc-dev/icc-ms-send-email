@@ -14,6 +14,4 @@ export class AppController {
     let dataMail = { ...data };
     return await this.emailSrvc.send(dataMail);
   }
-
-  
 }

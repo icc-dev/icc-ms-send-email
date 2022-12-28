@@ -195,7 +195,7 @@ describe('validationData', () => {
       try {
         validationData({
           templateId: 'templateId',
-          to: 'to'
+          to: 'to',
         } as any);
       } catch (error) {
         expect(error).not.toBeDefined();

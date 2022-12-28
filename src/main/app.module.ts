@@ -12,17 +12,20 @@ import { AppController } from './controller/app.controller';
   providers: [
     {
       provide: EmailService,
-      useFactory: async (configService: ConfigService, loggerService: LoggerService) => {
+      useFactory: async (
+        configService: ConfigService,
+        loggerService: LoggerService,
+      ) => {
         const provider = new SendGridProvider(
           configService.get<string>('sendgrid.apiKey'),
           configService.get<string>('sendgrid.mailFrom'),
-          loggerService
+          loggerService,
         );
         return new EmailService(provider);
       },
-      inject: [ConfigService, LoggerService]
-    }, 
-    LoggerService
+      inject: [ConfigService, LoggerService],
+    },
+    LoggerService,
   ],
 })
 export class AppModule {}

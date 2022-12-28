@@ -6,7 +6,7 @@ describe('CustomConfigModule', () => {
   it('should compile the module', async () => {
     const module = await Test.createTestingModule({
       imports: [CustomConfigModule],
-      providers: [ConfigService]
+      providers: [ConfigService],
     }).compile();
     expect(module).toBeDefined();
   });
