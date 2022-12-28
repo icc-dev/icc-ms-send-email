@@ -20,7 +20,12 @@ steps:
 # Deploy container image to Cloud Run
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: gcloud
-  args: ['run', 'deploy', '${_SERVICE_NAME}', '--image', 'gcr.io/$PROJECT_ID/${_SERVICE_NAME}:$BRANCH_NAME-$SHORT_SHA', '--region', '$_REGION']
+  args: ['run', 'deploy', '${_SERVICE_NAME}', '--image', 'gcr.io/$PROJECT_ID/${_SERVICE_NAME}:$BRANCH_NAME-$SHORT_SHA', '--region', '$_REGION', '--port', '$$PORT']
+  secretEnv: ['PORT']
+availableSecrets:
+  secretManager:
+  - versionName: gcloud secrets versions access latest --secret=ms-default-port
+    env: 'PORT'
 images:
 - gcr.io/$PROJECT_ID/${_SERVICE_NAME}:$BRANCH_NAME-$SHORT_SHA
 options:
