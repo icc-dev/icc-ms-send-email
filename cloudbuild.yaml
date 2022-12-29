@@ -20,7 +20,25 @@ steps:
 # Deploy container image to Cloud Run
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: gcloud
-  args: ['run', 'deploy', '${_SERVICE_NAME}', '--image', 'gcr.io/$PROJECT_ID/${_SERVICE_NAME}:$BRANCH_NAME-$SHORT_SHA', '--region', '$_REGION']
+  args: [
+    'beta',
+    'run',
+    'jobs',
+    'create',
+    '${_SERVICE_NAME}',
+    '--image',
+    'gcr.io/$PROJECT_ID/${_SERVICE_NAME}:$BRANCH_NAME-$SHORT_SHA',
+    '--tasks',
+    '3',
+    '--set-env-vars',
+    'SLEEP_MS=10000',
+    '--set-env-vars',
+    'FAIL_RATE=0.5',
+    '--max-retries',
+    '5',
+    '--region',
+    '$_REGION'
+  ]
 images:
 - gcr.io/$PROJECT_ID/${_SERVICE_NAME}:$BRANCH_NAME-$SHORT_SHA
 options:
